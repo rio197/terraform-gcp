@@ -25,4 +25,11 @@ resource "google_compute_instance" "default" {
         # Include this section to give the VM an external IP address
       }
     }
+    
+    terraform {
+      backend "gcs {
+          bucket = "bucket-tfstate-terraform"
+          prefix = terraform/state
+      }
+    }
 }
