@@ -27,7 +27,7 @@ resource "google_compute_instance" "default" {
     }
     
     terraform {
-      backend "gcs {
+      backend "gcs" {
           bucket = "bucket-tfstate-terraform"
           prefix = terraform/state
       }
