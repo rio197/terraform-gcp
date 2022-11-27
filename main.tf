@@ -1,13 +1,13 @@
 provider "google" {
-    region= "northamerica-northeast1"
-    zone= "northamerica-northeast1-a"
-    project= "terraform-learn-???"
-    credentials= "/home/???/terraform-learn-???-???.json"
+    region= var.region
+    zone= var.zone
+    project= var.project_name
+    credentials= var.credentials_file_path
 }
 
 resource "google_compute_instance" "default" {
     name = "terraform-instance"
-    machine_type = "f1-micro"
+    machine_type = var.machine_type
 
     boot_disk {
         initialize_params {
@@ -25,11 +25,11 @@ resource "google_compute_instance" "default" {
         # Include this section to give the VM an external IP address
       }
     }
-    
+
     terraform {
-      backend "gcs" {
-          bucket = "bucket-tfstate-terraform"
-          prefix = terraform/state
-      }
+        backend "gcs" {
+            bucket = "bucket-tfstate-terraform"
+            prefix = terraform/state
+        }
     }
 }
