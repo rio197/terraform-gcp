@@ -1,5 +1,5 @@
 variable "region" {
-    default = "us-west1"
+    default = "northamerica-northeast1"
 }
 
 variable "zone" {
