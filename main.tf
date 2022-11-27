@@ -25,11 +25,8 @@ resource "google_compute_instance" "default" {
         # Include this section to give the VM an external IP address
       }
     }
+}
 
-    terraform {
-        backend "gcs" {
-            bucket = "bucket-tfstate-terraform"
-            prefix = terraform/state
-        }
-    }
+output "instance_name" {
+  value = google_compute_instance.default.id
 }
