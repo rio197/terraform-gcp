@@ -9,6 +9,11 @@ resource "google_compute_instance" "default" {
     name = "terraform-instance"
     machine_type = var.machine_type
 
+    labels = {
+      application_name = "microservice"
+      environment = "development"
+    }
+
     boot_disk {
         initialize_params {
           image = "debian-cloud/debian-10"
