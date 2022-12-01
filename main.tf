@@ -26,7 +26,3 @@ resource "google_compute_instance" "default" {
       }
     }
 }
-
-output "instance_name" {
-  value = google_compute_instance.default.id
-}
